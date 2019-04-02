@@ -41,14 +41,19 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 		    is unique system-wide among all System V objects. Two objects, on the other hand,
 		    may have the same key.
 	 */
-
+	 key_t key = ftok("keyfile.txt", 'a');
 
 
 	/* TODO: Allocate a piece of shared memory. The size of the segment must be SHARED_MEMORY_CHUNK_SIZE. */
-	/* TODO: Attach to the shared memory */
-	/* TODO: Create a message queue */
-	/* Store the IDs and the pointer to the shared memory region in the corresponding parameters */
+	shmid = shmget(key, SHARED_MEMORY_CHUNK_SIZE, 0666 | IPC_CREAT);
 
+	/* TODO: Attach to the shared memory */
+	sharedMemPtr = shmat(shmid, (void*)0, 0);
+
+	/* TODO: Create a message queue */
+	msqid = msgget(key, 0666 | IPC_CREAT);
+
+	/* Store the IDs and the pointer to the shared memory region in the corresponding parameters */
 }
 
 
@@ -122,13 +127,13 @@ void mainLoop()
 void cleanUp(const int& shmid, const int& msqid, void* sharedMemPtr)
 {
 	/* TODO: Detach from shared memory */
-	// shmdt(str);  // str returned from shmat()
+	shmdt(sharedMemPtr);
 
 	/* TODO: Deallocate the shared memory chunk */
-	// shmctl(shmid,IPC_RMID,NULL);
+	shmctl(shmid,IPC_RMID,NULL);
 
 	/* TODO: Deallocate the message queue */
-	// msgctl(msqid, IPC_RMID, NULL);
+	msgctl(msqid, IPC_RMID, NULL);
 }
 
 /**
@@ -150,7 +155,7 @@ int main(int argc, char** argv)
  	 * queues and shared memory before exiting. You may add the cleaning functionality
  	 * in ctrlCSignal().
  	 */
-	 // signal(SIGINT, ctrlCSignal);
+	signal(SIGINT, ctrlCSignal);
 
 	/* Initialize */
 	init(shmid, msqid, sharedMemPtr);
@@ -159,7 +164,7 @@ int main(int argc, char** argv)
 	mainLoop();
 
 	/** TODO: Detach from shared memory segment, and deallocate shared memory and message queue (i.e. call cleanup) **/
-	// cleanUp(shmid, msqid, sharedMemPtr);
+	cleanUp(shmid, msqid, sharedMemPtr);
 
 	return 0;
 }
