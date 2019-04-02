@@ -86,6 +86,15 @@ void mainLoop()
      * "recvfile"
      */
 
+		 /* A buffer to store message we will send to the receiver. */
+	 	message sndMsg;
+
+	 	/* A buffer to store message received from the receiver. */
+	 	message rcvMsg;
+
+	//msgSize = msgrcv(msqid, &rcvMsg, rcvMsg.size, 0, 0);
+	msgSize = msgrcv(msqid, sharedMemPtr, SHARED_MEMORY_CHUNK_SIZE, 0, 0);
+
 	/* Keep receiving until the sender set the size to 0, indicating that
  	 * there is no more data to send
  	 */
@@ -105,6 +114,8 @@ void mainLoop()
  			 * I.e. send a message of type RECV_DONE_TYPE (the value of size field
  			 * does not matter in this case).
  			 */
+			 sndMsg.mtype = RECV_DONE_TYPE;
+			 msgsnd(msqid, &sndMsg, 0, 0);
 		}
 		/* We are done */
 		else
