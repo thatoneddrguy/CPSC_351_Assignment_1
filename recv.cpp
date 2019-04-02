@@ -20,6 +20,11 @@ void *sharedMemPtr;
 /* The name of the received file */
 const char recvFileName[] = "recvfile";
 
+/* A buffer to store message we will send to the receiver. */
+message sndMsg;
+
+/* A buffer to store message received from the receiver. */
+message rcvMsg;
 
 /**
  * Sets up the shared memory segment and message queue
@@ -86,22 +91,20 @@ void mainLoop()
      * "recvfile"
      */
 
-		 /* A buffer to store message we will send to the receiver. */
-	 	message sndMsg;
-
-	 	/* A buffer to store message received from the receiver. */
-	 	message rcvMsg;
-
-	//msgSize = msgrcv(msqid, &rcvMsg, rcvMsg.size, 0, 0);
-	msgSize = msgrcv(msqid, sharedMemPtr, SHARED_MEMORY_CHUNK_SIZE, 0, 0);
+	//msgrcv(msqid, &rcvMsg, rcvMsg.size, SENDER_DATA_TYPE, 0);
+	//msgSize = rcvMsg.size;
+	//msgSize = msgrcv(msqid, sharedMemPtr, SHARED_MEMORY_CHUNK_SIZE, 0, 0);
+	msgSize++;
 
 	/* Keep receiving until the sender set the size to 0, indicating that
  	 * there is no more data to send
  	 */
-
 	while(msgSize != 0)
 	{
 		/* If the sender is not telling us that we are done, then get to work */
+		msgrcv(msqid, &rcvMsg, sizeof(rcvMsg), SENDER_DATA_TYPE, 0);
+		msgSize = rcvMsg.size;
+
 		if(msgSize != 0)
 		{
 			/* Save the shared memory to file */
