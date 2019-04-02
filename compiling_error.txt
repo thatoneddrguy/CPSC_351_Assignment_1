@@ -1,4 +1,4 @@
-In file included from /home/justmonika/github/CPSC_351_Assignment_1/sender.cpp:8:0:
+In file included from /home/justmonika/github/CPSC_351_Assignment_1/recv.cpp:8:0:
 /home/justmonika/github/CPSC_351_Assignment_1/msg.h: In member function ‘void message::print(FILE*)’:
 /home/justmonika/github/CPSC_351_Assignment_1/msg.h:29:35: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘long int’ [-Wformat=]
    fprintf(fp, "%d %d", mtype, size);
