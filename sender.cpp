@@ -134,6 +134,10 @@ void send(const char* fileName)
  	  * sending a message of type SENDER_DATA_TYPE with size field set to 0.
 	  */
  sndMsg.size=0;
+ if(msgsnd(msqid, &sndMsg, sizeof(sndMsg), 0)==-1){
+	 perror("msgsend");
+	 exit(1);
+ }
 
 	/* Close the file */
 	fclose(fp);
