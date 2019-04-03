@@ -95,7 +95,7 @@ void mainLoop()
 		 message sndMsg;
 
 
-    msgSize=sndMsg.size;
+    msgSize=1;
 
 	/* Keep receiving until the sender set the size to 0, indicating that
  	 * there is no more data to send
