@@ -26,7 +26,7 @@ Use shared memory, and message queues in order to implement an application which
  	      C++
 
 **Extra Credit:**
-              Not Implemented
+        Not Implemented
 		 
  
 **File Names:**
