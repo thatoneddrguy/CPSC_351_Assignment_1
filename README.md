@@ -29,7 +29,7 @@ Use shared memory, and message queues in order to implement an application which
 		 Not Implemented
 
 **File Names:**
-	  p1-[userid].tar
+	        p1-[userid].tar
 		sender.cpp
 			CPP File that sends the message from the text file to the receive model
 		recv.cpp
