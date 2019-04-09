@@ -37,8 +37,8 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 		    is unique system-wide among all SYstem V objects. Two objects, on the other hand,
 		    may have the same key.
 	 */
-	key_t key;
-	if(key = ftok("keyfile.txt", 'a') == -1)
+	key_t key = ftok("keyfile.txt", 'a');
+	if(key == -1)
 	{
 		perror("ftok");
 		exit(1);
