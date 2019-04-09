@@ -30,16 +30,32 @@ const char recvFileName[] = "recvfile";
 
 void init(int& shmid, int& msqid, void*& sharedMemPtr)
 {
-	key_t key = ftok("keyfile.txt", 'a');
+	if(key_t key = ftok("keyfile.txt", 'a') == -1)
+	{
+		perror("ftok");
+		exit(1);
+	}
 
 	/* TODO: Allocate a piece of shared memory. The size of the segment must be SHARED_MEMORY_CHUNK_SIZE. */
-	shmid = shmget(key, SHARED_MEMORY_CHUNK_SIZE, 0666 | IPC_CREAT);
+	if(shmid = shmget(key, SHARED_MEMORY_CHUNK_SIZE, 0666 | IPC_CREAT) == -1)
+	{
+		perror("shmget");
+		exit(1);
+	}
 
 	/* TODO: Attach to the shared memory */
-	sharedMemPtr = shmat(shmid, (void*)0, 0);
+	if(sharedMemPtr = shmat(shmid, (void*)0, 0) == -1)
+	{
+		perror("shmat");
+		exit(1);
+	}
 
 	/* TODO: Create a message queue */
-	msqid = msgget(key, 0666 | IPC_CREAT);
+	if(msqid = msgget(key, 0666 | IPC_CREAT) == -1)
+	{
+		perror("msgget");
+		exit(1);
+	}
 
 	/* Store the IDs and the pointer to the shared memory region in the corresponding parameters */
 
@@ -154,11 +170,23 @@ void mainLoop()
 void cleanUp(const int& shmid, const int& msqid, void* sharedMemPtr)
 {
 	/* TODO: Detach from shared memory */
-shmdt(sharedMemPtr);
+	if(shmdt(sharedMemPtr) == -1)
+	{
+		perror("shmdt");
+		exit(1);
+	}
 	/* TODO: Deallocate the shared memory chunk */
-shmctl(shmid, IPC_RMID, NULL);
+	if(shmctl(shmid, IPC_RMID, NULL) == -1)
+	{
+		perror("shmctl");
+		exit(1);
+	}
 	/* TODO: Deallocate the message queue */
-msgctl(msqid,IPC_RMID,NULL);
+	if(msgctl(msqid,IPC_RMID,NULL) == -1)
+	{
+		perror("msgctl");
+		exit(1);
+	}
 }
 
 /**
@@ -180,7 +208,12 @@ int main(int argc, char** argv)
  	 * queues and shared memory before exiting. You may add the cleaning functionality
  	 * in ctrlCSignal().
  	 */
-  signal(SIGINT, ctrlCSignal);
+	if(signal(SIGINT, ctrlCSignal) == SIG_ERR)
+	{
+		perror("signal");
+		exit(1);
+	}
+	
 	/* Initialize */
 	init(shmid, msqid, sharedMemPtr);
 
@@ -188,6 +221,6 @@ int main(int argc, char** argv)
 	mainLoop();
 
 	/** TODO: Detach from shared memory segment, and deallocate shared memory and message queue (i.e. call cleanup) **/
- cleanUp(shmid, msqid, sharedMemPtr);
+	cleanUp(shmid, msqid, sharedMemPtr);
 	return 0;
 }

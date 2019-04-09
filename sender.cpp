@@ -37,15 +37,31 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 		    is unique system-wide among all SYstem V objects. Two objects, on the other hand,
 		    may have the same key.
 	 */
-	key_t key = ftok("keyfile.txt", 'a');
+	if(key_t key = ftok("keyfile.txt", 'a') == -1)
+	{
+		perror("ftok");
+		exit(1);
+	}
 
 
 	/* TODO: Get the id of the shared memory segment. The size of the segment must be SHARED_MEMORY_CHUNK_SIZE */
-		shmid = shmget(key, SHARED_MEMORY_CHUNK_SIZE, 0666 | IPC_CREAT);
+	if(shmid = shmget(key, SHARED_MEMORY_CHUNK_SIZE, 0666 | IPC_CREAT) == -1)
+	{
+		perror("shmget");
+		exit(1);
+	}
 	/* TODO: Attach to the shared memory */
-		sharedMemPtr = shmat(shmid, (void*)0, 0);
+	if(sharedMemPtr = shmat(shmid, (void*)0, 0) == -1)
+	{
+		perror("shmat");
+		exit(1);
+	}
 	/* TODO: Attach to the message queue */
-		msqid = msgget(key, 0666 | IPC_CREAT);
+	if(msqid = msgget(key, 0666 | IPC_CREAT) == -1)
+	{
+		perror("msget");
+		exit(1);
+	}
 	/* Store the IDs and the pointer to the shared memory region in the corresponding parameters */
 
 }
@@ -60,7 +76,11 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 void cleanUp(const int& shmid, const int& msqid, void* sharedMemPtr)
 {
 	/* TODO: Detach from shared memory */
-	shmdt(sharedMemPtr);
+	if(shmdt(sharedMemPtr) == -1)
+	{
+		perror("shmdt");
+		exit(1);
+	}
 }
 
 /**
