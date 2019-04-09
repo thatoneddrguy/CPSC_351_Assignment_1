@@ -54,11 +54,11 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 	
 	/* TODO: Attach to the shared memory */
 	sharedMemPtr = shmat(shmid, (void*)0, 0);
-	if(sharedMemPtr == -1)
+	/*if(sharedMemPtr == -1)
 	{
 		perror("shmat");
 		exit(1);
-	}
+	}*/
 	/* TODO: Attach to the message queue */
 	if(msqid = msgget(key, 0666 | IPC_CREAT) == -1)
 	{
