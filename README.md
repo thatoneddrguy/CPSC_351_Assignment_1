@@ -8,7 +8,11 @@ Group Members:
     James I Ku
     894841865
     thatoneddrguy@csu.fullerton.edu
-     
+    
+	Esteban Montelongo
+	888847456
+	EstebanMontelongo@csu.fullerton.edu
+	
     Bony Roy
     898161054
     broy91@csu.fullerton.edu
