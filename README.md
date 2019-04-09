@@ -23,31 +23,33 @@ Use shared memory, and message queues in order to implement an application which
 
 
 **Programming Language Used:**
-		 C++
+ 	      C++
 
 **Extra Credit:**
-		 Not Implemented
+              Not Implemented
+		 
  
 **File Names:**
-              p1-[userid].tar
+              p1=[userid].tar
               sender.cpp
-                    CPP File that sends the message from the text file to the receive model
+	            CPP File that sends the message from the text file gto the receive model
               recv.cpp
-                    CPP File that receives the message from the sender.cpp
-              keyfile.txt
-	            Text File that holds a "string" type of message
+	            CPP File the receives the message from the sender.cpp
+	      keyfile.txt
+	            Text File that holds a "string" type of message. Sender will send this information to receiver.
               msg.h
-	            Header File that holds a struct of the message relayed through message queues
+	            Header File that holds a struct of the message relayed through the message queues
               Makefile
-                    Makefile to build both the sender and receiver files
+	            Makefile to build both the sender and receiver files
 
 **To run our program:**
-	compile: make
-	execute: ./sender <FILE NAME>
-		 ./recv
+              Compile: make
+	      execute: ./sender <FILE NAME>
+	               ./recv
 
 
 
-**Sources:** Yun Tian, Skeleton Code posted on Titanium
+**Sources:** 
+            Professor Yun Tian, Skeleton Code posted on Titanium
 		     Message Queues: http://beej.us/guide/bgipc/output/html/multipage/mq.html
 		     Shared Memory: http://beej.us/guide/bgipc/output/html/multipage/shm.html
