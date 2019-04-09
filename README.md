@@ -6,16 +6,13 @@ Spring 2019
 
 Group Members:
       James Ku
-			894841865
+      894841865
       thatoneddrguy@csu.fullerton.edu
-
+      
       Bony Roy
-			898161054
+      898161054
       broy91@csu.fullerton.edu
-
-
-
-
+      
 Purpose: Use shared memory, and message queues in order to implement an application which
 		 synchronously transfers files between two processes.
 
