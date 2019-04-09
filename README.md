@@ -1,10 +1,10 @@
 # CPSC_351_Assignment_1
 
-CPSC 351- Section 2(13643)
-Spring 2019
+**_CPSC 351- Section 2(13643)_**
+**Spring 2019**
 
 
-Group Members:
+**Group Members:**
 
 	James I Ku
 	894841865
@@ -18,17 +18,17 @@ Group Members:
 	898161054
 	broy91@csu.fullerton.edu
       
-Purpose: Use shared memory, and message queues in order to implement an application which
-		 synchronously transfers files between two processes.
+**Purpose:**
+Use shared memory, and message queues in order to implement an application which synchronously transfers files between two processes.
 
 
-Programming Language Used:
+**Programming Language Used:**
 		 C++
 
-Extra Credit:
+**Extra Credit:**
 		 Not Implemented
 
-File Names:
+**File Names:**
 	  p1-[userid].tar
 		sender.cpp
 			CPP File that sends the message from the text file to the receive model
@@ -41,13 +41,13 @@ File Names:
 		Makefile
 			Makefile to build both the sender and receiver files
 
-To run our program:
+**To run our program:**
 	compile: make
 	execute: ./sender <FILE NAME>
 		 ./recv
 
 
 
-Sources: Yun Tian, Skeleton Code posted on Titanium
-		 Message Queues: http://beej.us/guide/bgipc/output/html/multipage/mq.html
-		 Shared Memory: http://beej.us/guide/bgipc/output/html/multipage/shm.html
+**Sources:** Yun Tian, Skeleton Code posted on Titanium
+		     Message Queues: http://beej.us/guide/bgipc/output/html/multipage/mq.html
+		     Shared Memory: http://beej.us/guide/bgipc/output/html/multipage/shm.html
