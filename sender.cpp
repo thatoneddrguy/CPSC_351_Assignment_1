@@ -110,7 +110,7 @@ void send(const char* fileName)
 			 perror("msgsend");
        exit(1);
 		 }else{
-			 printf("1");
+			 printf("Data is ready.\n");
 		 };
 
 
@@ -121,7 +121,7 @@ void send(const char* fileName)
 			 perror("msgrcv");
        exit(1);
 		 }else{
-			 printf("2");
+			 printf("Finished saving memory chunk.\n");
 		 };
 
 

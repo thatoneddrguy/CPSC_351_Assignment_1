@@ -108,7 +108,7 @@ void mainLoop()
  		 perror("msgrcv");
  		 exit(1);
  	  }else{
- 		 printf("1");
+ 		 printf("Ready to receive data.\n");
  	  };
 		msgSize=rcvMsg.size;
 		/* If the sender is not telling us that we are done, then get to work */
@@ -130,7 +130,7 @@ void mainLoop()
 	       exit(1);
 
 			 }else{
-				 printf("2");
+				 printf("Ready for next file chunk.\n");
 			 };
 		}
 		/* We are done */
