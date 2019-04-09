@@ -30,7 +30,8 @@ const char recvFileName[] = "recvfile";
 
 void init(int& shmid, int& msqid, void*& sharedMemPtr)
 {
-	if(key_t key = ftok("keyfile.txt", 'a') == -1)
+	key_t key;
+	if(key = ftok("keyfile.txt", 'a') == -1)
 	{
 		perror("ftok");
 		exit(1);
@@ -44,7 +45,8 @@ void init(int& shmid, int& msqid, void*& sharedMemPtr)
 	}
 
 	/* TODO: Attach to the shared memory */
-	if(sharedMemPtr = shmat(shmid, (void*)0, 0) == -1)
+	sharedMemPtr = shmat(shmid, (void*)0, 0);
+	if(sharedMemPtr == (void*) -1)
 	{
 		perror("shmat");
 		exit(1);
