@@ -29,17 +29,17 @@ Use shared memory, and message queues in order to implement an application which
 		 Not Implemented
 
 **File Names:**
-	        p1-[userid].tar
-		sender.cpp
-			CPP File that sends the message from the text file to the receive model
-		recv.cpp
-			CPP File that receives the message from the sender.cpp
-		keyfile.txt
-			Text File that holds a "string" type of message
-		msg.h
-			Header File that holds a struct of the message relayed through message queues
-		Makefile
-			Makefile to build both the sender and receiver files
+              p1-[userid].tar
+              sender.cpp
+                    CPP File that sends the message from the text file to the receive model
+              recv.cpp
+                    CPP File that receives the message from the sender.cpp
+              keyfile.txt
+	            Text File that holds a "string" type of message
+              msg.h
+	            Header File that holds a struct of the message relayed through message queues
+              Makefile
+                    Makefile to build both the sender and receiver files
 
 **To run our program:**
 	compile: make
