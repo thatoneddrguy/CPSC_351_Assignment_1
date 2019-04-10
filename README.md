@@ -28,7 +28,7 @@ Use shared memory, and message queues in order to implement an application which
 **Extra Credit:**	
 	Not Implemented
 		 
-Markup :  - - - -
+Markup: -------
 
 **File Names:**	
    
