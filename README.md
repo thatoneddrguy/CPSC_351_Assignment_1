@@ -28,7 +28,7 @@ Use shared memory, and message queues in order to implement an application which
 **Extra Credit:**	
 	Not Implemented
 		 
-Markup: -------
+
 
 **File Names:**	
    
@@ -39,7 +39,7 @@ Markup: -------
    5. msg.h: Header File that holds a struct of the message relayed through the message queues
    6. Makefile: Makefile to build both the sender and receiver files
 
-Markup :  - - - -
+
 
 **To run our program:**	
     
