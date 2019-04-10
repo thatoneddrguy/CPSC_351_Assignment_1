@@ -28,15 +28,18 @@ Use shared memory, and message queues in order to implement an application which
 **Extra Credit:**	
 	Not Implemented
 		 
- 
+Markup :  - - - -
+
 **File Names:**	
    Markup : 1. p1=[userid].tar
-   Markup : 2. sender.cpp: CPP File that sends the message from the text file gto the receive model
-   Markup : 3. recv.cpp : CPP File the receives the message from the sender.cpp
-   Markup : 4. keyfile.txt: Text File that holds a "string" type of message. Sender will send this information to receiver.
-   Markup : 5. msg.h: Header File that holds a struct of the message relayed through the message queues
-   Markup : 6. Makefile: Makefile to build both the sender and receiver files
+   2. sender.cpp: CPP File that sends the message from the text file gto the receive model
+   3. recv.cpp : CPP File the receives the message from the sender.cpp
+   4. keyfile.txt: Text File that holds a "string" type of message. Sender will send this information to receiver.
+   5. msg.h: Header File that holds a struct of the message relayed through the message queues
+   6. Makefile: Makefile to build both the sender and receiver files
+
 Markup :  - - - -
+
 **To run our program:**	
     
     1. Download tar files.
