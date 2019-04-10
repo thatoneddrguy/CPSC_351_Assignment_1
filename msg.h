@@ -14,7 +14,7 @@
 struct message
 {
 	/* The message type */
-	long mtype;
+	int mtype;
 	
 	/* How many bytes in the message */
 	int size;
