@@ -36,9 +36,10 @@ Use shared memory, and message queues in order to implement an application which
    Markup : 4. keyfile.txt: Text File that holds a "string" type of message. Sender will send this information to receiver.
    Markup : 5. msg.h: Header File that holds a struct of the message relayed through the message queues
    Markup : 6. Makefile: Makefile to build both the sender and receiver files
-
+Markup :  - - - -
 **To run our program:**	
-   Markup : 1. Download tar files.
+    
+    1. Download tar files.
     2. Unzip files.
     3. Open terminal in directory where files are located.
     4. In terminal type make and press enter.
