@@ -25,4 +25,4 @@ sender.o:	sender.cpp
 
 # Removes files
 clean:
-	rm -rf *.o sender recv keyfile.txt
+	rm -rf *.o sender recv recvfile
