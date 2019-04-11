@@ -156,6 +156,7 @@ void mainLoop()
 		{
 			/* Close the file */
 			fclose(fp);
+			printf("Process finished.\n");
 		}
 	}
 }
@@ -215,7 +216,7 @@ int main(int argc, char** argv)
 		perror("signal");
 		exit(1);
 	}
-	
+
 	/* Initialize */
 	init(shmid, msqid, sharedMemPtr);
 
